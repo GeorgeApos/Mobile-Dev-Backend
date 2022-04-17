@@ -1,7 +1,7 @@
 <?php 
     include 'player.php';
     include 'team.php';
-    include 'tournament.php'
+    include 'tournament.php';
     
     $team1 = new basketball_team('Pao','Athens','432123432');
     $team2 = new basketball_team('Paok','Thessaloniki','43223432');

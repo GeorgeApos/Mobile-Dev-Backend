@@ -13,7 +13,10 @@
             $this->username = $username;
             $this->password = $password;
             $this->port = $port;
-            $this->setConnection();
+        }
+
+        function closeConnection(){
+            $this->connection->close();
         }
 
         function setConnection(){
@@ -29,10 +32,6 @@
             $this->database = $database;
         }
 
-        function closeConnection(){
-            $this->connection->close();
-        }
-
         function createDatabase($db_name){
             $sql = "CREATE DATABASE $db_name";
             if ($this->connection->query($sql) === TRUE) {
@@ -41,29 +40,16 @@
                 echo "Error creating database: " . $this->connection->error;
             }
         }
+
+        function selectQuery($selectQuery){
+            $query = file_get_contents('tables.sql');
+
+            if ($this->connection->query($query) === TRUE) {
+                echo "all tables created successfully <br/>";
+            } else {
+                echo "Error creating tables: " . $this->connection->error;
+            }
+        }
     }
-    
-    
-
-    $conn = new mysqli($servername, $username, $password);
-
-    
-
-    $sql = "CREATE DATABASE myDB";
-    if ($conn->query($sql) === TRUE) {
-        echo "DB Created";
-    }else {
-        echo "Error creating DB: " . $conn->error;
-    }
-
-    $query = file_get_contents('tables.sql');
-
-    if ($conn->query($query) === TRUE) {
-        echo "all tables created successfully <br/>";
-    } else {
-        echo "Error creating tables: " . $conn->error;
-    }
-
-    $conn->close();
 
 ?>
