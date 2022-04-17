@@ -22,6 +22,14 @@
 
             // }
         }
+
+        function get_Team(){
+            return $this->Team;
+        }
+
+        function set_Team($Team){
+            $this->Team = $Team; 
+        }
     }
 
 
