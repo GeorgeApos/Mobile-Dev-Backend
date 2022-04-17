@@ -20,7 +20,7 @@
         }
 
         function setConnection(){
-            $connection =  mysqli_connect('localhost','root','',3036);
+            $connection = mysqli_connect($this->servername,$this->username,$this->password);
             if ($connection->connect_error) {
                 die("Connection failed: " . $connection->connect_error);
                 }
