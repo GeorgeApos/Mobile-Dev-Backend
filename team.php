@@ -14,6 +14,7 @@
         $team = new basketball_team($Name, $City, $Logo);
 
         array_push($arrayOfTeams, $team);
+
     }
 
     class basketball_team{

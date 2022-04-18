@@ -13,6 +13,7 @@
         $tournament = new basketball_tournament($Teams, $Name);
 
         array_push($arrayOfTournaments, $tournament);
+
     }
     
     class basketball_tournament{

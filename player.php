@@ -10,10 +10,12 @@
         createPlayer($arrayOfPlayers, $name, $position, $team, $photo);
     }
 
-    function createPlayer($arrayOfPlayersOnTeam, $Name, $Position, $Team, $Logo){
+    function createPlayer($arrayOfPlayers, $Name, $Position, $Team, $Logo){
         $player = new basketball_player($Name, $Position, $Team, $Logo);
 
-        array_push($arrayOfPlayersOnTeam, $player);
+        array_push($arrayOfPlayers, $player);
+
+        
     }
 
     class basketball_player{
