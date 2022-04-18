@@ -1,5 +1,5 @@
 <?php 
-    
+    include 'mysql_handler.php';
     if(isset($_POST['submit_team'])){
         static $arrayOfTeams = array();
 

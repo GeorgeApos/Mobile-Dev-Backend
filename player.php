@@ -1,4 +1,5 @@
 <?php 
+    include 'mysql_handler.php';
     if(isset($_POST['submit_player'])){
         static $arrayOfPlayers = array();
 

@@ -1,5 +1,12 @@
 <?php
 
+    function createDbFunction($db_name, $handler){
+        if (!defined('FOO_EXECUTED')) {
+            $handler->createDatabase($db_name);
+            define('FOO_EXECUTED', true);
+        }
+    }
+
     class MySQLHandler{
        private string $servername ;
        private string $username ;
@@ -40,9 +47,8 @@
             }
         }
 
-        function selectQuery($selectQuery){
+        function createTables($selectQuery){
             $query = file_get_contents('tables.sql');
-
             if ($this->connection->query($query) === TRUE) {
                 echo "all tables created successfully <br/>";
             } else {
