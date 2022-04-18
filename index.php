@@ -16,9 +16,9 @@
     </div>
     <?php
         include 'mysql_handler.php';
-        $client = new MySQLHandler('localhost', 'root', '', 3036);
+        $client = new MySQLHandler('localhost', 'MyUserAdmin', 'Ur3*3$fasE234o4', 3036);
         $client->setConnection();
-        createDbFunction('esake-db',$client);
+        createDbFunction('esakedb',$client);
     ?>
     <div class="container">
         <div class="row gx-5">

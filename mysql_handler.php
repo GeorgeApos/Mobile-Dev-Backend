@@ -40,7 +40,7 @@
 
         function createDatabase($db_name){
             $sql = "CREATE DATABASE $db_name";
-            if ($this->connection->query($sql) === TRUE) {
+            if (mysqli_query($this->connection,$sql) === TRUE) {
                 echo "Database created successfully";
             } else {
                 echo "Error creating database: " . $this->connection->error;
