@@ -14,9 +14,7 @@
     function createPlayer($arrayOfPlayers, $Name, $Position, $Team, $Logo){
         $player = new basketball_player($Name, $Position, $Team, $Logo);
 
-        array_push($arrayOfPlayers, $player);
-
-        
+        array_push($arrayOfPlayers, $player);      
     }
 
     class basketball_player{
@@ -30,7 +28,6 @@
             $this->Position = $Position;
             $this->Team = $Team;
             $this->Photo = $Photo;
-
         }
 
         function getName(){

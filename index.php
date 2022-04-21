@@ -5,54 +5,35 @@
 <title>ΕΣΑΚΕ</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-</head>
-<body>
-    <div class="p-5 mb-4 bg-light rounded-3">
-      <div class="container-fluid py-5">
-            <h1 class="display-3 fw-bold">ΕΣΑΚΕ</h1>
-            <p class="col-md-3 fs-4">Basketball management service.</p>
-      </div>
-    </div>
-    <?php
-        include 'mysql_handler.php';
-        $client = new MySQLHandler('localhost', 'MyUserAdmin', 'Ur3*3$fasE234o4', 3036);
-        $client->setConnection();
-        createDbFunction('esakedb',$client);
-    ?>
-    <div class="container">
-        <div class="row gx-5">
-            <div class="col-sm-4">
-                <h5> ΔΗΜΙΟΥΡΓΙΑ ΟΜΑΔΑΣ </h5>
-                <br>
-                <form action="" method="post">
-                    Name: <input type="text" name="Name"><br>
-                    City: <input type="text" name="City"><br>
-                    Logo: <input type="file" name="Logo" id="picture" /><br>
-                    <button type="submit" name="submit_team">Add team</button>
-                </form>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<body class="container bg-dark text-white fluid ">
+    <div class="container my-4 ms-0 me-0 ps-0 pe-0">
+        <div class="card bg-dark text-white ">
+            <img src="bg2.jpg" class="card-img " alt="No image found" >
+            <div class="card-img-overlay ">
+                <h3 class="card-title text-sm-center text-md-center text-lg-center text-xl-center text-wrap py-2">ΕΣΑΚΕ</h5>
+                <h4 class="card-text text-sm-center text-md-center text-lg-center text-xl-center text-wrap pt-4 ">Your basketball manager service</h4>
             </div>
-            <div class="col-sm-4">
-                <h5> ΔΗΜΙΟΥΡΓΙΑ ΤΟΥΡΝΟΥΑ </h5>
-                <br>
-                <form action="" method="post">
-                    Name: <input type="text" name="Name"><br>
-                    Team: <input type="text" name="Team"><br>
-                    <button type="submit" name="submit_tournament">Add tournament</button>
-                </form>
+        </div>
+        <span class="d-block bg-dark bg-gradient text-wrap p-4">
+            <h4>Create or select a tournament to begin</h4>
+        </span>
+        <div class="row">
+            <div class="col-6 text-center">
+                <button type="button" class="btn btn-secondary">Create</button>
             </div>
-            <div class="col-sm-4">
-                <h5> ΔΗΜΙΟΥΡΓΙΑ ΠΑΙΚΤΗ </h5>
-                <br>
-                <form action="" method="post">
-                    Name: <input type="text" name="name"><br>
-                    Position: <input type="text" name="position"><br>
-                    Team: <input type="text" name="team"><br>
-                    Photo: <input type="file" name="picture" id="picture" /><br>
-                    <button type="submit" name="submit_player">Add player</button>
-                </form>
+            <div class="col-6">
+                <button type="button" class="btn btn-secondary">Create</button>
             </div>
         </div>
     </div>
+    
+
 </body>
 
+<?php
+    include 'mysql_handler.php';
+    $client = new MySQLHandler('localhost', 'root', 'Ur3*3$fasE234o4', 'esakedb', 3036);
+    $client->setConnection();
+    // createDbFunction('esakedb',$client);
+?>
