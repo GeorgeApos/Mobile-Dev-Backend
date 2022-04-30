@@ -1,21 +1,4 @@
 <?php 
-    include 'mysql_handler.php';
-    if(isset($_POST['submit_player'])){
-        static $arrayOfPlayers = array();
-
-        $name = $_POST['name'];
-        $position = $_POST['position'];
-        $team = $_POST['team'];
-        $photo = $_POST['picture'];
-
-        createPlayer($arrayOfPlayers, $name, $position, $team, $photo);
-    }
-
-    function createPlayer($arrayOfPlayers, $Name, $Position, $Team, $Logo){
-        $player = new basketball_player($Name, $Position, $Team, $Logo);
-
-        array_push($arrayOfPlayers, $player);      
-    }
 
     class basketball_player{
         private $Name;
