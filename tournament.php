@@ -32,7 +32,7 @@
         }
 
         function games(){
-            for($i = 0; $x < count($this->Teams);$i++){
+            for($i = 0; $i < count($this->Teams);$i++){
                 
             }
 
