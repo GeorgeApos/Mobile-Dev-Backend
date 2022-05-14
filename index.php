@@ -52,6 +52,15 @@
                     <button type="submit" name="submit_player">Add player</button>
                 </form>
             </div>
+            <div class="col-sm-4">
+                <h5> ΔΗΜΙΟΥΡΓΙΑ ΧΡΗΣΤΗ(BACKEND) </h5>
+                <br>
+                <form action="" method="post">
+                    Name: <input type="text" name="name"><br>
+                    Admin (y/n): <input type="text" name="position"><br>
+                    <button type="submit" name="submit_user">Add user</button>
+                </form>
+            </div>            
         </div>
     </div>
 </body>
