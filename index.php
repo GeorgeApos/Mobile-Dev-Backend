@@ -57,7 +57,7 @@
                 <br>
                 <form action="" method="post">
                     Name: <input type="text" name="name"><br>
-                    Admin (y/n): <input type="text" name="position"><br>
+                    Admin (y/n): <input type="text" name="isadmin"><br>
                     <button type="submit" name="submit_user">Add user</button>
                 </form>
             </div>            

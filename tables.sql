@@ -11,10 +11,14 @@ CREATE TABLE players (
     PRIMARY KEY photo VARBINARY
 );
 
-CREATE TABLE tournaments ()
+CREATE TABLE tournaments (
     name VARCHAR(30) NOT NULL,
     FOREIGN KEY team VARCHAR(30) NOT NULL REFERENCES teams.name
-;
+);
 
+CREATE TABLE users ( 
+    name VARCHAR(30) NOT NULL,
+    boolean isAdmin
+);
 /* VARBINARY = 256 KB */ 
 
