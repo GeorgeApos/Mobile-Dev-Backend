@@ -10,27 +10,7 @@
 <body class="container bg-dark text-white fluid ">
 
 <?php
-    $nameErr =  $cityError = $logoError = "";
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (empty($_POST["TeamName"])) {
-            $nameErr = "Name is required";
-        } else {
-            $nameErr =  " ";
-        }
-        
-        if (empty($_POST["TeamCity"])) {
-            $cityError = "City is required";
-        } else {
-            $cityError = "";
-        }
-        
-        if (empty($_POST["TeamLogo"])) {
-            $logoError = "Logo is required";
-        } else {
-            $logoError =  "";
-        }
-    
-    }
+    include "data_updater.php";
     // include 'mysql_handler.php';
     // $client = new MySQLHandler('localhost', 'root', 'Ur3*3$fasE234o4', 'esakedb', 3036);
     // $client->setConnection();
@@ -57,7 +37,7 @@
                         <div class="col">
                             <div class="input-group input-group-sm mb-3">
                                 <span class="input-group-text text-white bg-dark border-0 w-25 bg-gradient" id="PlayerName">Name</span>
-                                <input type="text" class="form-control" name="PlayerName">
+                                <input type="text" class="form-control" name="PlayerName" placeholder=<?php echo $playerNameErr;?>>
                             </div>
                         </div>
                     </div>
@@ -65,7 +45,7 @@
                         <div class="col">
                             <div class="input-group input-group-sm mb-3">
                                 <span class="input-group-text text-white bg-dark border-0 w-25 bg-gradient" id="PlayerPosition">Position</span>
-                                <input type="text" class="form-control" name="PlayerPosition">
+                                <input type="text" class="form-control" name="PlayerPosition" placeholder=<?php echo $playerPositionErr;?>>
                             </div>
                         </div>
                     </div>
@@ -73,7 +53,7 @@
                         <div class="col">
                             <div class="input-group input-group-sm mb-3">
                                 <span class="input-group-text text-white bg-dark border-0 w-25 bg-gradient" id="PlayerPhoto">Photo</span>
-                                <input type="file" class="form-control" name="PlayerPhotoInput">
+                                <input type="file" class="form-control" name="PlayerPhotoInput" placeholder=<?php echo $playerPhotoErr;?>>
                             </div>
                         </div>
                     </div>
@@ -82,10 +62,12 @@
                             <div class="input-group input-group-sm mb-3">
                                 <span class="input-group-text text-white bg-dark border-0 w-25 bg-gradient" id="PlayerTeam">Team</span>
                                 <select class="form-select form-select-sm" name="PlayerTeam">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <option selected><?php echo $playerTeamErr;?></option>
+                                    <?php
+                                        foreach($arrayOfTeams as $item){
+                                            echo "<option value='strtolower($item)'>$item</option>";
+                                        }
+                                    ?>
                                 </select>
                             </div>
                         </div>
@@ -104,8 +86,7 @@
                         <div class="col">
                             <div class="input-group input-group-sm mb-3">
                                 <span class="input-group-text text-white bg-dark border-0 w-25 bg-gradient" id="TeamName">Name</span>
-                                <input type="text" class="form-control" name="TeamName">
-                                <span class="error">* <?php echo $nameErr;?></span>
+                                <input type="text" class="form-control" name="TeamName"  placeholder=<?php echo $teamNameErr;?>>
                             </div>
                         </div>
                     </div>
@@ -113,8 +94,7 @@
                         <div class="col">
                             <div class="input-group input-group-sm mb-3">
                                 <span class="input-group-text text-white bg-dark border-0 w-25 bg-gradient" id="TeamCity">City</span>
-                                <input type="text" class="form-control" name="TeamCity">
-                                <span class="error">* <?php echo $cityError;?></span>
+                                <input type="text" class="form-control" name="TeamCity" placeholder=<?php echo $teamCityError;?>>
                             </div>
                         </div>
                     </div>
@@ -122,8 +102,7 @@
                         <div class="col">
                             <div class="input-group input-group-sm mb-3">
                                 <span class="input-group-text text-white bg-dark border-0 w-25 bg-gradient" id="TeamLogo">Logo</span>
-                                <input type="file" class="form-control" name="TeamLogo">
-                                <span class="error">* <?php echo $logoError;?></span>
+                                <input type="file" class="form-control" name="TeamLogo" placeholder=<?php echo $teamLogoError;?>>
                             </div>
                         </div>
                     </div>
@@ -140,20 +119,22 @@
                     <div class="row">
                         <div class="col">
                             <div class="input-group input-group-sm mb-3">
-                                <span class="input-group-text text-white bg-dark border-0 w-25 bg-gradient" id="TrounamentName">Name</span>
-                                <input type="text" class="form-control" name="TrounamentName" >
+                                <span class="input-group-text text-white bg-dark border-0 w-25 bg-gradient" id="TournamentName">Name</span>
+                                <input type="text" class="form-control" name="TournamentName" placeholder = <?php echo $tournamentNameErr;?>>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <div class="input-group input-group-sm mb-3">
-                                <span class="input-group-text text-white bg-dark border-0 w-25 bg-gradient" id="TrounamentTeams">Teams</span>
-                                <select class="form-select form-select-sm" name="TrounamentTeams">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <span class="input-group-text text-white bg-dark border-0 w-25 bg-gradient" id="TournamentTeams">Teams</span>
+                                <select class="form-select form-select-sm" name="TournamentTeams">
+                                    <option selected><?php echo $tournamentTeamErr;?></option>
+                                    <?php
+                                        foreach($arrayOfTournaments as $item){
+                                            echo "<option value='strtolower($item)'>$item</option>";
+                                        }
+                                    ?>
                                 </select>
                             </div>
                         </div>
@@ -167,8 +148,6 @@
             </div>
         </div>
     </div>
-    
-
 </body>
 
 
