@@ -1,22 +1,23 @@
-
+<?php
+        include "data_form_control.php";
+        
+        $client = new MySQLHandler('localhost', 'root', '', 'esakedb', 3306);
+        $client->setConnection();
+        $client->createTables('teams.sql');
+        $client->createTables('players.sql');
+        $client->createTables('tournamets.sql');
+        $_SESSION["client"] = $client;
+    ?>
 <!DOCTYPE html>
 <html>
 <head>
-<title>ΕΣΑΚΕ</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <title>ΕΣΑΚΕ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</head>
 <body class="container bg-dark text-white fluid ">
-
-<?php
-    include "data_updater.php";
-    // include 'mysql_handler.php';
-    // $client = new MySQLHandler('localhost', 'root', 'Ur3*3$fasE234o4', 'esakedb', 3036);
-    // $client->setConnection();
-    // createDbFunction('esakedb',$client);
-?>
-
     <div class="container my-4 ms-0 me-0 ps-0 pe-0">
         <div class="card bg-dark text-white ">
             <!-- NOTE: In order to change layout for the photo, css must be implemented -->
@@ -37,7 +38,7 @@
                         <div class="col">
                             <div class="input-group input-group-sm mb-3">
                                 <span class="input-group-text text-white bg-dark border-0 w-25 bg-gradient" id="PlayerName">Name</span>
-                                <input type="text" class="form-control" name="PlayerName" placeholder=<?php echo $playerNameErr;?>>
+                                <input type="text" class="form-control" name="PlayerName" placeholder=<?php echo $playerNameErr;?> >
                             </div>
                         </div>
                     </div>
@@ -65,7 +66,7 @@
                                     <option selected><?php echo $playerTeamErr;?></option>
                                     <?php
                                         foreach($arrayOfTeams as $item){
-                                            echo "<option value='strtolower($item)'>$item</option>";
+                                            echo "<option value='$item'>$item</option>";
                                         }
                                     ?>
                                 </select>
@@ -128,11 +129,11 @@
                         <div class="col">
                             <div class="input-group input-group-sm mb-3">
                                 <span class="input-group-text text-white bg-dark border-0 w-25 bg-gradient" id="TournamentTeams">Teams</span>
-                                <select class="form-select form-select-sm" name="TournamentTeams">
+                                <select class="form-select form-select-sm" name="TournamentTeams[]" multiple>
                                     <option selected><?php echo $tournamentTeamErr;?></option>
                                     <?php
-                                        foreach($arrayOfTournaments as $item){
-                                            echo "<option value='strtolower($item)'>$item</option>";
+                                        foreach($arrayOfTeams as $item){
+                                            echo "<option value='$item'>$item</option>";
                                         }
                                     ?>
                                 </select>
@@ -141,7 +142,10 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <input type="submit" name="submit_tournamentr" class="btn btn-secondary" value="Create"></input>
+                            <input type="submit" name="submit_tournament" class="btn btn-secondary" value="Create"></input>
+                            <span class="d-inline-block text-truncate ms-4">
+                                Hold ctrl/shift to select multiple elements
+                            </span>
                         </div>
                     </div>
                 </form>
